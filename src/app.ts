@@ -27,6 +27,12 @@ mongoose.connect(process.env.DATABASE_URL, {
     useUnifiedTopology: true,
 });
 
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "*");
+    next();
+  });
+
 // Routes
 app.use("/paragraph", paragraphRoutes);
 

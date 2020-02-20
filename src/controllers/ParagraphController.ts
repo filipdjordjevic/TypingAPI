@@ -20,9 +20,9 @@ class ParagraphController {
     public async create(req: express.Request, res: express.Response) {
         try {
             const paragraph = req.body;
-            await ParagraphService.create(paragraph);
+            const result = await ParagraphService.create(paragraph);
 
-            res.status(201).send({ success: true });
+            res.status(201).send({ data: result });
         } catch (error) {
             if (error instanceof ArgumentError) {
                 res.status(400).send({ error });
